@@ -52,9 +52,6 @@ RUN groupadd --system ${EP_GID:+--gid "${EP_GID}" --non-unique} etherpad && \
         ${EP_HOME:+--home-dir "${EP_HOME}"} --create-home \
         ${EP_SHELL:+--shell "${EP_SHELL}"} etherpad
 
-RUN apt-get update
-RUN apt-get install -y libpq-dev postgresql-client
-
 ARG EP_DIR=/opt/etherpad-lite
 RUN mkdir -p "${EP_DIR}" && chown etherpad:etherpad "${EP_DIR}"
 
@@ -67,6 +64,8 @@ RUN export DEBIAN_FRONTEND=noninteractive; \
         ca-certificates \
         git \
         curl \
+        libpq-dev \
+        postgresql-client \
         ${INSTALL_ABIWORD:+abiword} \
         ${INSTALL_SOFFICE:+libreoffice} \
         && \
