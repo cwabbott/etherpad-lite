@@ -784,7 +784,7 @@ exports.reloadSettings = () => {
     } catch (e) {
       console.info(
           `Session key file "${sessionkeyFilename}" not found. Creating with random contents.`);
-      exports.sessionKey = randomString(32);
+      exports.sessionKey = process.env.SESSION_KEY || randomString(32);
       fs.writeFileSync(sessionkeyFilename, exports.sessionKey, 'utf8');
     }
   } else {
