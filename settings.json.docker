@@ -553,7 +553,6 @@
    * Uncomment to customize.
    */
 
-  /*
   "toolbar": {
     "left": [
       ["bold", "italic", "underline", "strikethrough"],
@@ -562,15 +561,13 @@
       ["clearauthorship"]
     ],
     "right": [
-      ["importexport", "timeslider", "savedrevision"],
-      ["settings", "embed"],
+      ["timeslider", "savedrevision"],
       ["showusers"]
     ],
     "timeslider": [
-      ["timeslider_export", "timeslider_returnToPad"]
+      ["timeslider_returnToPad"]
     ]
   },
-  */
 
   /*
    * Expose Etherpad version in the web interface and in the Server http header.

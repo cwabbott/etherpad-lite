@@ -40,7 +40,7 @@ try {
 } catch (e) {
   apiHandlerLogger.info(
       `Api key file "${apikeyFilename}" not found.  Creating with random contents.`);
-  apikey = randomString(32);
+  apikey = process.env.API_KEY || randomString(32);
   fs.writeFileSync(apikeyFilename, apikey, 'utf8');
 }
 
