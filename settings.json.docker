@@ -181,8 +181,8 @@
 
 
   "ssl" : {
-            "key"  : "/opt/etherpad-lite/key.pem",
-            "cert" : "/opt/etherpad-lite/cert.pem"
+            "key"  : "/opt/etherpad-lite/epl-server.key",
+            "cert" : "/opt/etherpad-lite/epl-server.crt"
           },
 /*
 "ca": ["/opt/etherpad-lite/rootCA.crt"]

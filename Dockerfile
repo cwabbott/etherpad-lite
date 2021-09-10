@@ -94,7 +94,19 @@ RUN { [ -z "${ETHERPAD_PLUGINS}" ] || \
 # Copy the configuration file.
 COPY --chown=etherpad:etherpad ./settings.json.docker "${EP_DIR}"/settings.json
 
-RUN openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=collaborate.oursails.com'
+RUN openssl genrsa -out epl-server.key 4096 && \
+openssl req -new -key epl-server.key -out epl-server.csr -subj "/CN=collaborate.oursails.com" && \
+openssl x509 -req -days 9000 -in epl-server.csr -signkey epl-server.key -out epl-server.crt && \
+openssl rsa -in epl-server.key -out epl-server.key.insecure  && \
+mv epl-server.key epl-server.key.secure && \
+mv epl-server.key.insecure epl-server.key && \
+openssl genrsa -out own-ca.key 4096 && \
+openssl req -new -x509 -days 9000 -key own-ca.key -out own-ca.crt -subj "/CN=saiils.com" && \
+openssl x509 -req -days 9000 -in epl-server.csr -CA own-ca.crt -CAkey own-ca.key -set_serial 001 -out epl-server.crt && \
+chmod 400 epl-server.key && \
+chown etherpad epl-server.key && \
+chmod 400 epl-server.crt && \
+chown etherpad epl-server.crt
 
 # Fix group permissions
 RUN chmod -R g=u .
