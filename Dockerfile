@@ -111,7 +111,8 @@ chown etherpad epl-server.crt
 # Fix group permissions
 RUN chmod -R g=u .
 
-HEALTHCHECK none #--interval=20s --timeout=3s CMD curl -f http://localhost:9001 || exit 1
+HEALTHCHECK none
+#--interval=20s --timeout=3s CMD curl -f http://localhost:9001 || exit 1
 
 EXPOSE 9001
 CMD ["node", "src/node/server.js"]
