@@ -179,13 +179,14 @@
    * that the Etherpad server can access them
    */
 
-  /*
+
   "ssl" : {
-            "key"  : "/path-to-your/epl-server.key",
-            "cert" : "/path-to-your/epl-server.crt",
-            "ca": ["/path-to-your/epl-intermediate-cert1.crt", "/path-to-your/epl-intermediate-cert2.crt"]
+            "key"  : "/opt/etherpad-lite/key.pem",
+            "cert" : "/opt/etherpad-lite/cert.pem"
           },
-  */
+/*
+"ca": ["/opt/etherpad-lite/rootCA.crt"]
+*/
 
   /*
    * The type of the database.
@@ -205,7 +206,7 @@
    * https://www.npmjs.com/package/ueberdb2
    */
 
-  "dbType": "${DB_TYPE:dirty}",
+  "dbType": "${DB_TYPE:postgres}",
   "dbSettings": {
     "host":     "${DB_HOST:undefined}",
     "port":     "${DB_PORT:undefined}",
@@ -213,9 +214,6 @@
     "user":     "${DB_USER:undefined}",
     "password": "${DB_PASS:undefined}",
     "charset":  "${DB_CHARSET:undefined}",
-    "filename": "${DB_FILENAME:var/dirty.db}",
-    "collection": "${DB_COLLECTION:undefined}",
-    "url":      "${DB_URL:undefined}"
   },
 
   /*

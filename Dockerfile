@@ -94,6 +94,8 @@ RUN { [ -z "${ETHERPAD_PLUGINS}" ] || \
 # Copy the configuration file.
 COPY --chown=etherpad:etherpad ./settings.json.docker "${EP_DIR}"/settings.json
 
+RUN openssl req -x509 -newkey rsa:4096 -keyout key.pem -out cert.pem -days 365 -nodes -subj '/CN=collaborate.oursails.com'
+
 # Fix group permissions
 RUN chmod -R g=u .
 

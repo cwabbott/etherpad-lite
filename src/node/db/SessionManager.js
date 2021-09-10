@@ -77,7 +77,9 @@ exports.findAuthorID = async (groupID, sessionCookie) => {
   const now = Math.floor(Date.now() / 1000);
   const isMatch = (si) => (si != null && si.groupID === groupID && now < si.validUntil);
   const sessionInfo = await promises.firstSatisfies(sessionInfoPromises, isMatch);
+  console.debug(`sessionInfo is set with ${sessionInfo}`);
   if (sessionInfo == null) return undefined;
+  console.debug(`sessionInfo is set with ${sessionInfo.authorID}`);
   return sessionInfo.authorID;
 };
 
