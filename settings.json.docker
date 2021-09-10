@@ -181,7 +181,6 @@
 
 
   "ssl" : {
-            "rejectUnauthorized" : false,
             "key"  : "/opt/etherpad-lite/key.pem",
             "cert" : "/opt/etherpad-lite/cert.pem"
           },
