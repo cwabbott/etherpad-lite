@@ -179,12 +179,13 @@
    * that the Etherpad server can access them
    */
 
-
-  "ssl" : {
-            "key"  : "/opt/etherpad-lite/epl-server.key",
-            "cert" : "/opt/etherpad-lite/epl-server.crt"
-          },
 /*
+  "ssl" : {
+            "key"  : "${SSL_KEY:/opt/etherpad-lite/epl-server.key}",
+            "cert" : "${SSL_CRT:/opt/etherpad-lite/epl-server.crt}",
+            "ca": ["${SSL_CACRT:/opt/etherpad-lite/rootCA.crt}"]
+          },
+
 "ca": ["/opt/etherpad-lite/rootCA.crt"]
 */
 
@@ -214,6 +215,7 @@
     "user":     "${DB_USER:undefined}",
     "password": "${DB_PASS:undefined}",
     "charset":  "${DB_CHARSET:undefined}",
+    "ssl" : "true"
   },
 
   /*
